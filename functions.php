@@ -54,6 +54,3 @@ function inspect($variable){
 }
 
 ?>
-
-
-?>
