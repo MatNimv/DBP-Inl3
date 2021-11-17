@@ -1,0 +1,352 @@
+[
+    {
+      "id": 1,
+      "name": "Chlo",
+      "species": "Badger, eurasian",
+      "origin": "Poland",
+      "favorite_color": "Teal"
+    },
+    {
+      "id": 2,
+      "name": "Cristina",
+      "species": "Gecko, barking",
+      "origin": "United States",
+      "favorite_color": "Red"
+    },
+    {
+      "id": 3,
+      "name": "Orly",
+      "species": "Ibex",
+      "origin": "Finland",
+      "favorite_color": "Red"
+    },
+    {
+      "id": 4,
+      "name": "Faustine",
+      "species": "Peacock, blue",
+      "origin": "Philippines",
+      "favorite_color": "Mauv"
+    },
+    {
+      "id": 5,
+      "name": "Aron",
+      "species": "American bison",
+      "origin": "Philippines",
+      "favorite_color": "Mauv"
+    },
+    {
+      "id": 6,
+      "name": "Gleda",
+      "species": "Black-tailed tree creeper",
+      "origin": "South Korea",
+      "favorite_color": "Turquoise"
+    },
+    {
+      "id": 7,
+      "name": "Kimmie",
+      "species": "Boat-billed heron",
+      "origin": "Poland",
+      "favorite_color": "Red"
+    },
+    {
+      "id": 8,
+      "name": "Brok",
+      "species": "Silver gull",
+      "origin": "France",
+      "favorite_color": "Fuscia"
+    },
+    {
+      "id": 9,
+      "name": "Marcelia",
+      "species": "Red lava crab",
+      "origin": "Brazil",
+      "favorite_color": "Fuscia"
+    },
+    {
+      "id": 10,
+      "name": "Emmi",
+      "species": "Hoopoe, eurasian",
+      "origin": "Indonesia",
+      "favorite_color": "Orange"
+    },
+    {
+      "id": 11,
+      "name": "Torr",
+      "species": "Quoll, spotted-tailed",
+      "origin": "Armenia",
+      "favorite_color": "Maroon"
+    },
+    {
+      "id": 12,
+      "name": "Britteny",
+      "species": "Dragon, asian water",
+      "origin": "Indonesia",
+      "favorite_color": "Mauv"
+    },
+    {
+      "id": 13,
+      "name": "Doloritas",
+      "species": "Long-billed cockatoo",
+      "origin": "Venezuela",
+      "favorite_color": "Yellow"
+    },
+    {
+      "id": 14,
+      "name": "Sari",
+      "species": "Koala",
+      "origin": "China",
+      "favorite_color": "Fuscia"
+    },
+    {
+      "id": 15,
+      "name": "Dacy",
+      "species": "Two-toed sloth",
+      "origin": "Norway",
+      "favorite_color": "Red"
+    },
+    {
+      "id": 16,
+      "name": "Nikolai",
+      "species": "Green vine snake",
+      "origin": "Sweden",
+      "favorite_color": "Yellow"
+    },
+    {
+      "id": 17,
+      "name": "Zoe",
+      "species": "Mynah, common",
+      "origin": "Uganda",
+      "favorite_color": "Turquoise"
+    },
+    {
+      "id": 18,
+      "name": "Mercie",
+      "species": "Long-tailed spotted cat",
+      "origin": "China",
+      "favorite_color": "Pink"
+    },
+    {
+      "id": 19,
+      "name": "Jenifer",
+      "species": "Eurasian hoopoe",
+      "origin": "Indonesia",
+      "favorite_color": "Puce"
+    },
+    {
+      "id": 20,
+      "name": "Gare",
+      "species": "Dusky rattlesnake",
+      "origin": "France",
+      "favorite_color": "Yellow"
+    },
+    {
+      "id": 21,
+      "name": "Clark",
+      "species": "Marmot, hoary",
+      "origin": "Russia",
+      "favorite_color": "Goldenrod"
+    },
+    {
+      "id": 22,
+      "name": "Anne",
+      "species": "Black spider monkey",
+      "origin": "Philippines",
+      "favorite_color": "Purple"
+    },
+    {
+      "id": 23,
+      "name": "Borden",
+      "species": "Nelson ground squirrel",
+      "origin": "Czech Republic",
+      "favorite_color": "Fuscia"
+    },
+    {
+      "id": 24,
+      "name": "Thom",
+      "species": "Red kangaroo",
+      "origin": "Argentina",
+      "favorite_color": "Fuscia"
+    },
+    {
+      "id": 25,
+      "name": "Leopold",
+      "species": "Shelduck, european",
+      "origin": "Mexico",
+      "favorite_color": "Khaki"
+    },
+    {
+      "id": 26,
+      "name": "Clementia",
+      "species": "Gull, kelp",
+      "origin": "Finland",
+      "favorite_color": "Puce"
+    },
+    {
+      "id": 27,
+      "name": "Lyn",
+      "species": "Long-billed cockatoo",
+      "origin": "Indonesia",
+      "favorite_color": "Indigo"
+    },
+    {
+      "id": 28,
+      "name": "Babette",
+      "species": "Great skua",
+      "origin": "Thailand",
+      "favorite_color": "Orange"
+    },
+    {
+      "id": 29,
+      "name": "Michaelina",
+      "species": "Hoary marmot",
+      "origin": "Philippines",
+      "favorite_color": "Puce"
+    },
+    {
+      "id": 30,
+      "name": "Fairfax",
+      "species": "Arboral spiny rat",
+      "origin": "China",
+      "favorite_color": "Aquamarine"
+    },
+    {
+      "id": 31,
+      "name": "Tim",
+      "species": "Fowl, helmeted guinea",
+      "origin": "Tunisia",
+      "favorite_color": "Teal"
+    },
+    {
+      "id": 32,
+      "name": "Devondra",
+      "species": "Butterfly, tropical buckeye",
+      "origin": "China",
+      "favorite_color": "Goldenrod"
+    },
+    {
+      "id": 33,
+      "name": "Marley",
+      "species": "Long-necked turtle",
+      "origin": "Brazil",
+      "favorite_color": "Aquamarine"
+    },
+    {
+      "id": 34,
+      "name": "Dwain",
+      "species": "Cormorant, neotropic",
+      "origin": "Poland",
+      "favorite_color": "Crimson"
+    },
+    {
+      "id": 35,
+      "name": "Sophia",
+      "species": "Wagtail, african pied",
+      "origin": "Ireland",
+      "favorite_color": "Red"
+    },
+    {
+      "id": 36,
+      "name": "Ozzie",
+      "species": "Scottish highland cow",
+      "origin": "Brazil",
+      "favorite_color": "Fuscia"
+    },
+    {
+      "id": 37,
+      "name": "Rand",
+      "species": "Bat, madagascar fruit",
+      "origin": "Croatia",
+      "favorite_color": "Goldenrod"
+    },
+    {
+      "id": 38,
+      "name": "Nadia",
+      "species": "White-fronted capuchin",
+      "origin": "Russia",
+      "favorite_color": "Orange"
+    },
+    {
+      "id": 39,
+      "name": "Grace",
+      "species": "Hartebeest, coke's",
+      "origin": "Poland",
+      "favorite_color": "Red"
+    },
+    {
+      "id": 40,
+      "name": "Feliza",
+      "species": "Stork, marabou",
+      "origin": "Ecuador",
+      "favorite_color": "Indigo"
+    },
+    {
+      "id": 41,
+      "name": "Joya",
+      "species": "Parrot, hawk-headed",
+      "origin": "Indonesia",
+      "favorite_color": "Crimson"
+    },
+    {
+      "id": 42,
+      "name": "Ricca",
+      "species": "Pine siskin",
+      "origin": "China",
+      "favorite_color": "Orange"
+    },
+    {
+      "id": 43,
+      "name": "Alena",
+      "species": "Topi",
+      "origin": "Russia",
+      "favorite_color": "Mauv"
+    },
+    {
+      "id": 44,
+      "name": "Dacie",
+      "species": "Bushbuck",
+      "origin": "Belarus",
+      "favorite_color": "Mauv"
+    },
+    {
+      "id": 45,
+      "name": "Dulcea",
+      "species": "African black crake",
+      "origin": "China",
+      "favorite_color": "Mauv"
+    },
+    {
+      "id": 46,
+      "name": "Wolfgang",
+      "species": "Javan gold-spotted mongoose",
+      "origin": "China",
+      "favorite_color": "Mauv"
+    },
+    {
+      "id": 47,
+      "name": "Jim",
+      "species": "Yellow-billed stork",
+      "origin": "Brazil",
+      "favorite_color": "Violet"
+    },
+    {
+      "id": 48,
+      "name": "Kylen",
+      "species": "White stork",
+      "origin": "Madagascar",
+      "favorite_color": "Khaki"
+    },
+    {
+      "id": 49,
+      "name": "Nathanil",
+      "species": "Bee-eater, carmine",
+      "origin": "Czech Republic",
+      "favorite_color": "Aquamarine"
+    },
+    {
+      "id": 50,
+      "name": "Pier",
+      "species": "Albatross, waved",
+      "origin": "Guinea",
+      "favorite_color": "Red"
+    }
+]
