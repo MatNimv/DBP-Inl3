@@ -1,6 +1,8 @@
 <?php
-require_once "functions.php";
-//tar bort EN användare. 
+require_once "../functions.php";
+//denna sidan tar bort EN användare. 
+//Tar emot {id}, 
+//skickar iväg användaren som togs bort.
 
 //tar emot inputen som användaren har gett i Insomnia.
 //vilket är endast id.
@@ -12,35 +14,48 @@ $allUsers = loadJSON("users.json");
 
 //variabel för metoden.
 $method = $_SERVER["REQUEST_METHOD"];
+//variabeln för content type.
+$contentType = $_SERVER["CONTENT_TYPE"];
 
 //ALLA användare från databasen.
 $allUsers = loadJSON("users.json");
 
 //allt utförs ENDAST om metoden är DELETE.
 if ($method === "DELETE"){
-    $found = false;
-    $id = $requestData["id"];
+    if ($contentType === "application/json"){
+        $found = false;
+        $id = $requestData["id"];
 
-    if (!isset($id)){
+        $foundUser = null;
+
+        if (!isset($id)){
+            sendJson([
+                "message" => "ID finns inte i requesten."
+            ],400);
+        }
+
+        foreach ($allUsers as $index => $user){
+            if($user["id"] == $id){
+                $found = true;
+                array_splice($allUsers, $index, 1);
+                $foundUser = $user;
+                break;
+            } 
+        }
+        if ($found == false){
+            sendJson([
+                "message" => "ID:$id does not exist"
+            ], 404);
+        }
+
+        saveJson("users.json", $allUsers);
         sendJson([
-            "message" => "ID finns inte i requesten."
-        ],400);
+            "message" => "You removed this user ID:$id",
+            "user" => $user]);
+        } else {
+            sendJson([
+                "message" => "Content type must me JSON."
+            ], 400);
+        }
     }
-
-    foreach ($allUsers as $index => $user){
-        if($user["id"] == $id){
-            $found = true;
-            array_splice($allUsers, $index, 1);
-            break;
-        } 
-    }
-    if ($found == false){
-        sendJson([
-            "message" => "ID:$id does not exist"
-        ], 404);
-    }
-
-    saveJson("database.json", $allUsers);
-    sendJson(["id" => "You removed this user ID:$id"]);
-}
 ?>
