@@ -52,8 +52,3 @@ function inspect($variable){
     echo var_dump($variable);
     echo '</pre>';
 }
-
-?>
-
-
-?>
