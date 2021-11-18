@@ -43,9 +43,8 @@ if ($method === "PATCH"){
                 if ($user["id"] == $id){
                     $found = true;
 
-                    //kontrollerar alla nycklar, och om den har 
-                    //skickats med. Om den har skickats med
-                    //ändras valuen.
+                    //kontrollerar alla nycklar och om de är tomma. 
+                    //Om den har skickats med ändras valuen.
                     if (isset($requestData["first_name"])){
                         $firstName = $requestData["first_name"];
 
@@ -75,6 +74,7 @@ if ($method === "PATCH"){
                         }
                     $user["last_name"] = $lastName;
                     }
+
                     if (isset($requestData["gender"])){
                         $gender = $requestData["gender"];
 
@@ -89,6 +89,7 @@ if ($method === "PATCH"){
                         }
                     $user["gender"] = $gender;
                     }
+
                     if (isset($requestData["pet"])){
                         $pet = $requestData["pet"];
 
@@ -103,6 +104,7 @@ if ($method === "PATCH"){
                         }
                     $user["pet"] = $pet;
                     }
+
                     sendJson([$requestData]);
                     //uppdaterar användaren.
                     $allUsers[$index] = $user;
@@ -119,12 +121,12 @@ if ($method === "PATCH"){
                 sendJson(["message" => "ID was not found."], 404);
             }
         } else { //om id inte är med i requesten.
-            sendJson(["message" => "Bad Request. ID must be included"], 405);
+            sendJson(["message" => "Bad Request. ID must be included"], 400);
         }
     } else {//om contenttype inte är json
-        sendJson(["message" => "Method is not allowed."], 400);
+        sendJson(["message" => "Bad Request."], 400);
     }
 } else { //om metoden inte är PATCH
-    sendJson(["message" => "Method is not allowed."], 400);
+    sendJson(["message" => "Method is not allowed."], 405);
 }
 ?>

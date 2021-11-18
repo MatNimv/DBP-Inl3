@@ -35,9 +35,7 @@ if ($method === "DELETE"){
         $foundUser = null;
 
         if (!isset($id)){ //om id inte ens finns i URl.
-            sendJson([
-                "message" => "Bad Request. ID must be included."
-            ],400);
+            sendJson(["message" => "Bad Request. ID must be included."],400);
         }
 
         foreach ($allUsers as $index => $user){
@@ -49,9 +47,7 @@ if ($method === "DELETE"){
             } 
         }
         if ($found == false){ //om id inte matchar med den requestade.
-            sendJson([
-                "message" => "ID:$id was not found."
-            ], 404);
+            sendJson(["message" => "ID:$id was not found."], 404);
         }
 
         //sparar den "uppdaterade" users.json filen.
@@ -61,13 +57,9 @@ if ($method === "DELETE"){
             "message" => "You removed this user ID:$id",
             "user" => $user]);
         } else { //om contenttype inte är application/json.
-            sendJson([
-                "message" => "Content type must be JSON."
-            ], 400);
+            sendJson(["message" => "Bad Request."], 400);
         }
     } else { //alla andra metoder än DELETE.
-        sendJson([
-            "message" => "Method is not allowed."
-        ], 405);
+        sendJson(["message" => "Method is not allowed."], 405);
     }
 ?>
