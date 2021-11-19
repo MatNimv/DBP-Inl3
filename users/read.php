@@ -1,5 +1,4 @@
 <?php
-header( "Content-type: application/json" );
 require_once "../functions.php";
 
 $allUsers = loadJson("users.json");
@@ -21,7 +20,7 @@ if (isset($_GET["first_name"])) {
 if (isset($_GET["limit"])) {
     $limit = $_GET["limit"];
     $slicedUsers = array_slice($users, 0, $limit);
-    send($slicedUsers);
+    sendJson($slicedUsers);
 }
 
 
@@ -35,10 +34,13 @@ if (isset($_GET["ids"])) {
         }
     }
 
-    send($usersById);
+    sendJson($usersById);
 }
 
-send($users); 
+echo '<pre>';
+echo var_dump($users);
+echo '</pre>';
+sendJson($users); 
 }
 
 
