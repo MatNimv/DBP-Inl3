@@ -38,12 +38,12 @@ if ($method === "PATCH"){
 
             $id = $requestData["id"];
             $found = false;
-            $foundUser = null;
+            $foundOwner = null;
             //ALLA användare från users.json
-            $allUsers = loadJSON("users.json");
+            $allOwners = loadJSON("owners.json");
 
-            foreach($allUsers as $index => $user){
-                if ($user["id"] == $id){
+            foreach($allOwners as $index => $owner){
+                if ($owner["id"] == $id){
                     $found = true;
                     $keyNotSetArr = [];
 
@@ -61,7 +61,7 @@ if ($method === "PATCH"){
                                 ]
                             ],400);
                         }
-                    $user["first_name"] = $firstName;
+                    $owner["first_name"] = $firstName;
                     } else {
                         array_push($keyNotSetArr, "first_name");
                     }
@@ -78,7 +78,7 @@ if ($method === "PATCH"){
                                 ]
                             ],400);
                         }
-                    $user["last_name"] = $lastName;
+                    $owner["last_name"] = $lastName;
                     } else {
                         array_push($keyNotSetArr, "last_name");
                     }
@@ -95,7 +95,7 @@ if ($method === "PATCH"){
                                 ]
                             ],400);
                         }
-                    $user["gender"] = $gender;
+                    $owner["gender"] = $gender;
                     } else {
                         array_push($keyNotSetArr, "gender");
                     }
@@ -112,19 +112,19 @@ if ($method === "PATCH"){
                                 ]
                             ],400);
                         }
-                    $user["age"] = $age;
+                    $owner["age"] = $age;
                     } else {
                         array_push($keyNotSetArr, "age");
                     }
 
                     //uppdaterar användaren.
-                    $allUsers[$index] = $user;
-                    $foundUser = $user;
+                    $allOwners[$index] = $owner;
+                    $foundOwner = $owner;
                     break;
                 }
             }
             //uppdaterar databasen.
-            saveJson("users.json", $allUsers);
+            saveJson("users.json", $allOwners);
 
             //om det är nycklar som inte skickats in, skrivs de ut med användaren.
             if (count($keyNotSetArr) >= 1){
@@ -133,12 +133,12 @@ if ($method === "PATCH"){
                     array_push($messageArr, $oneKey);
                 }
                 sendJson([
-                    "User" => $foundUser,
+                    "User" => $foundOwner,
                     "Keys not changed. If this seems wrong, please check your spelling." => $messageArr
                 ]);
             } else { //annars skickas bara hela användaren.
                 sendJson([
-                    "User" => $foundUser]);
+                    "User" => $foundOwner]);
             }
 
             //om id inte finns i databasen.
@@ -154,4 +154,3 @@ if ($method === "PATCH"){
 } else { //om metoden inte är PATCH
     sendJson(["message" => "Method is not allowed."], 405);
 }
-?>
