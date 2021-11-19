@@ -2,8 +2,7 @@
 require_once "../functions.php";
 
 $allUsers = loadJson("users.json");
-$allPets = loadJson("../pets.json")
-
+$allPets = loadJson("../pets.json");
 ?>
 <?php
 $requestMethod = $_SERVER["REQUEST_METHOD"];
@@ -13,14 +12,18 @@ if ($requestMethod === "GET") {
         foreach ($allUsers as $user => $user) {
             if ($user["first_name"] == $_GET["first_name"]) {
                 sendJson($allUsers[$user]);
+                exit();
+            
             }
         }
     }
 }
 if (isset($_GET["limit"])) {
     $limit = $_GET["limit"];
-    $slicedUsers = array_slice($users, 0, $limit);
+    $slicedUsers = array_slice($allUsers, 0, $limit);
     sendJson($slicedUsers);
+    exit();
+   
 }
 
 
@@ -28,20 +31,16 @@ if (isset($_GET["limit"])) {
         $ids = explode(",", $_GET["ids"]);
         $usersById = [];
 
-        foreach ($users as $user) {
+        foreach ($allUsers as $user) {
             if (in_array($user["id"], $ids)) {
                 $usersById[] = $user;
             }
         }
 
-    sendJson($usersById);
+    sendJson($allUsers);
+    echo '<pre>';
+    echo var_dump($allUsers);
+    echo '</pre>';
+    exit();
 }
-
-echo '<pre>';
-echo var_dump($users);
-echo '</pre>';
-sendJson($users); 
-}
-
-
 ?>
