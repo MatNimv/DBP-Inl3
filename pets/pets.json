@@ -1,352 +1,352 @@
 [
     {
       "id": 1,
-      "name": "Chlo",
-      "species": "Badger, eurasian",
-      "origin": "Poland",
-      "favorite_color": "Teal"
+      "name": "Orton",
+      "species": "Pine siskin",
+      "origin": "South Africa",
+      "owner": 6
     },
     {
       "id": 2,
-      "name": "Cristina",
-      "species": "Gecko, barking",
-      "origin": "United States",
-      "favorite_color": "Red"
+      "name": "Crichton",
+      "species": "Native cat",
+      "origin": "Philippines",
+      "owner": 20
     },
     {
       "id": 3,
-      "name": "Orly",
-      "species": "Ibex",
-      "origin": "Finland",
-      "favorite_color": "Red"
+      "name": "Laird",
+      "species": "Guerza",
+      "origin": "Philippines",
+      "owner": 3
     },
     {
       "id": 4,
-      "name": "Faustine",
-      "species": "Peacock, blue",
-      "origin": "Philippines",
-      "favorite_color": "Mauv"
+      "name": "Celeste",
+      "species": "Blue-footed booby",
+      "origin": "Indonesia",
+      "owner": 44
     },
     {
       "id": 5,
-      "name": "Aron",
-      "species": "American bison",
-      "origin": "Philippines",
-      "favorite_color": "Mauv"
+      "name": "Marla",
+      "species": "Tortoise, radiated",
+      "origin": "Colombia",
+      "owner": 10
     },
     {
       "id": 6,
-      "name": "Gleda",
-      "species": "Black-tailed tree creeper",
-      "origin": "South Korea",
-      "favorite_color": "Turquoise"
+      "name": "Lucien",
+      "species": "Dove, laughing",
+      "origin": "Philippines",
+      "owner": 27
     },
     {
       "id": 7,
-      "name": "Kimmie",
-      "species": "Boat-billed heron",
-      "origin": "Poland",
-      "favorite_color": "Red"
+      "name": "Janna",
+      "species": "Dragonfly, russian",
+      "origin": "Philippines",
+      "owner": 22
     },
     {
       "id": 8,
-      "name": "Brok",
-      "species": "Silver gull",
-      "origin": "France",
-      "favorite_color": "Fuscia"
+      "name": "Callida",
+      "species": "Wattled crane",
+      "origin": "Norway",
+      "owner": 14
     },
     {
       "id": 9,
-      "name": "Marcelia",
-      "species": "Red lava crab",
-      "origin": "Brazil",
-      "favorite_color": "Fuscia"
+      "name": "Noah",
+      "species": "Southern white-crowned shrike",
+      "origin": "Colombia",
+      "owner": 44
     },
     {
       "id": 10,
-      "name": "Emmi",
-      "species": "Hoopoe, eurasian",
+      "name": "Orbadiah",
+      "species": "Musk ox",
       "origin": "Indonesia",
-      "favorite_color": "Orange"
+      "owner": 34
     },
     {
       "id": 11,
-      "name": "Torr",
-      "species": "Quoll, spotted-tailed",
-      "origin": "Armenia",
-      "favorite_color": "Maroon"
+      "name": "Kessia",
+      "species": "Malleefowl",
+      "origin": "Mongolia",
+      "owner": 32
     },
     {
       "id": 12,
-      "name": "Britteny",
-      "species": "Dragon, asian water",
+      "name": "Lance",
+      "species": "Tortoise, desert",
       "origin": "Indonesia",
-      "favorite_color": "Mauv"
+      "owner": 9
     },
     {
       "id": 13,
-      "name": "Doloritas",
-      "species": "Long-billed cockatoo",
-      "origin": "Venezuela",
-      "favorite_color": "Yellow"
+      "name": "Romona",
+      "species": "Australian brush turkey",
+      "origin": "Germany",
+      "owner": 5
     },
     {
       "id": 14,
-      "name": "Sari",
-      "species": "Koala",
+      "name": "Deni",
+      "species": "Phalarope, northern",
       "origin": "China",
-      "favorite_color": "Fuscia"
+      "owner": 14
     },
     {
       "id": 15,
-      "name": "Dacy",
-      "species": "Two-toed sloth",
-      "origin": "Norway",
-      "favorite_color": "Red"
+      "name": "Duncan",
+      "species": "Heron, gray",
+      "origin": "Kenya",
+      "owner": 31
     },
     {
       "id": 16,
-      "name": "Nikolai",
-      "species": "Green vine snake",
-      "origin": "Sweden",
-      "favorite_color": "Yellow"
+      "name": "Ray",
+      "species": "Vulture, bengal",
+      "origin": "Madagascar",
+      "owner": 39
     },
     {
       "id": 17,
-      "name": "Zoe",
-      "species": "Mynah, common",
-      "origin": "Uganda",
-      "favorite_color": "Turquoise"
+      "name": "Gerty",
+      "species": "Cormorant, king",
+      "origin": "China",
+      "owner": 48
     },
     {
       "id": 18,
-      "name": "Mercie",
-      "species": "Long-tailed spotted cat",
-      "origin": "China",
-      "favorite_color": "Pink"
+      "name": "Gaye",
+      "species": "Arctic ground squirrel",
+      "origin": "France",
+      "owner": 37
     },
     {
       "id": 19,
-      "name": "Jenifer",
-      "species": "Eurasian hoopoe",
-      "origin": "Indonesia",
-      "favorite_color": "Puce"
+      "name": "Cobbie",
+      "species": "Blue shark",
+      "origin": "Albania",
+      "owner": 42
     },
     {
       "id": 20,
-      "name": "Gare",
-      "species": "Dusky rattlesnake",
-      "origin": "France",
-      "favorite_color": "Yellow"
+      "name": "Amby",
+      "species": "Cormorant, little",
+      "origin": "Japan",
+      "owner": 16
     },
     {
       "id": 21,
-      "name": "Clark",
-      "species": "Marmot, hoary",
-      "origin": "Russia",
-      "favorite_color": "Goldenrod"
+      "name": "Claudelle",
+      "species": "Capuchin, weeper",
+      "origin": "South Africa",
+      "owner": 4
     },
     {
       "id": 22,
-      "name": "Anne",
-      "species": "Black spider monkey",
-      "origin": "Philippines",
-      "favorite_color": "Purple"
+      "name": "Trenton",
+      "species": "Stork, greater adjutant",
+      "origin": "Russia",
+      "owner": 17
     },
     {
       "id": 23,
-      "name": "Borden",
-      "species": "Nelson ground squirrel",
-      "origin": "Czech Republic",
-      "favorite_color": "Fuscia"
+      "name": "Harbert",
+      "species": "Carmine bee-eater",
+      "origin": "Poland",
+      "owner": 6
     },
     {
       "id": 24,
-      "name": "Thom",
-      "species": "Red kangaroo",
-      "origin": "Argentina",
-      "favorite_color": "Fuscia"
+      "name": "Benji",
+      "species": "Turkey, common",
+      "origin": "Philippines",
+      "owner": 7
     },
     {
       "id": 25,
-      "name": "Leopold",
-      "species": "Shelduck, european",
-      "origin": "Mexico",
-      "favorite_color": "Khaki"
+      "name": "Yorgos",
+      "species": "Komodo dragon",
+      "origin": "China",
+      "owner": 11
     },
     {
       "id": 26,
-      "name": "Clementia",
-      "species": "Gull, kelp",
-      "origin": "Finland",
-      "favorite_color": "Puce"
+      "name": "Lilith",
+      "species": "Egyptian vulture",
+      "origin": "Czech Republic",
+      "owner": 11
     },
     {
       "id": 27,
-      "name": "Lyn",
-      "species": "Long-billed cockatoo",
-      "origin": "Indonesia",
-      "favorite_color": "Indigo"
+      "name": "Stephen",
+      "species": "Goose, knob-nosed",
+      "origin": "United States",
+      "owner": 45
     },
     {
       "id": 28,
-      "name": "Babette",
-      "species": "Great skua",
-      "origin": "Thailand",
-      "favorite_color": "Orange"
+      "name": "Isidro",
+      "species": "Grey heron",
+      "origin": "Peru",
+      "owner": 33
     },
     {
       "id": 29,
-      "name": "Michaelina",
-      "species": "Hoary marmot",
-      "origin": "Philippines",
-      "favorite_color": "Puce"
+      "name": "Terrye",
+      "species": "Woylie",
+      "origin": "Indonesia",
+      "owner": 49
     },
     {
       "id": 30,
-      "name": "Fairfax",
-      "species": "Arboral spiny rat",
+      "name": "Donica",
+      "species": "Crab-eating fox",
       "origin": "China",
-      "favorite_color": "Aquamarine"
+      "owner": 31
     },
     {
       "id": 31,
-      "name": "Tim",
-      "species": "Fowl, helmeted guinea",
-      "origin": "Tunisia",
-      "favorite_color": "Teal"
+      "name": "Craggy",
+      "species": "Cockatoo, red-breasted",
+      "origin": "Poland",
+      "owner": 9
     },
     {
       "id": 32,
-      "name": "Devondra",
-      "species": "Butterfly, tropical buckeye",
-      "origin": "China",
-      "favorite_color": "Goldenrod"
+      "name": "Rolf",
+      "species": "Tiger",
+      "origin": "Belarus",
+      "owner": 1
     },
     {
       "id": 33,
-      "name": "Marley",
-      "species": "Long-necked turtle",
-      "origin": "Brazil",
-      "favorite_color": "Aquamarine"
+      "name": "Clywd",
+      "species": "Monkey, black spider",
+      "origin": "China",
+      "owner": 26
     },
     {
       "id": 34,
-      "name": "Dwain",
-      "species": "Cormorant, neotropic",
-      "origin": "Poland",
-      "favorite_color": "Crimson"
+      "name": "Illa",
+      "species": "Hartebeest, coke's",
+      "origin": "Portugal",
+      "owner": 20
     },
     {
       "id": 35,
-      "name": "Sophia",
-      "species": "Wagtail, african pied",
-      "origin": "Ireland",
-      "favorite_color": "Red"
+      "name": "Debor",
+      "species": "Sable antelope",
+      "origin": "France",
+      "owner": 3
     },
     {
       "id": 36,
-      "name": "Ozzie",
-      "species": "Scottish highland cow",
-      "origin": "Brazil",
-      "favorite_color": "Fuscia"
+      "name": "Rodolfo",
+      "species": "Eland, common",
+      "origin": "China",
+      "owner": 48
     },
     {
       "id": 37,
-      "name": "Rand",
-      "species": "Bat, madagascar fruit",
-      "origin": "Croatia",
-      "favorite_color": "Goldenrod"
+      "name": "Friedrick",
+      "species": "Sugar glider",
+      "origin": "Philippines",
+      "owner": 16
     },
     {
       "id": 38,
-      "name": "Nadia",
-      "species": "White-fronted capuchin",
+      "name": "Jo-anne",
+      "species": "Otter, small-clawed",
       "origin": "Russia",
-      "favorite_color": "Orange"
+      "owner": 17
     },
     {
       "id": 39,
-      "name": "Grace",
-      "species": "Hartebeest, coke's",
-      "origin": "Poland",
-      "favorite_color": "Red"
+      "name": "Wren",
+      "species": "Jackal, golden",
+      "origin": "China",
+      "owner": 11
     },
     {
       "id": 40,
-      "name": "Feliza",
-      "species": "Stork, marabou",
-      "origin": "Ecuador",
-      "favorite_color": "Indigo"
+      "name": "Juliane",
+      "species": "Alligator, mississippi",
+      "origin": "Colombia",
+      "owner": 1
     },
     {
       "id": 41,
-      "name": "Joya",
-      "species": "Parrot, hawk-headed",
-      "origin": "Indonesia",
-      "favorite_color": "Crimson"
+      "name": "Costa",
+      "species": "Miner's cat",
+      "origin": "Marshall Islands",
+      "owner": 5
     },
     {
       "id": 42,
-      "name": "Ricca",
-      "species": "Pine siskin",
+      "name": "Mariska",
+      "species": "Bleu, blue-breasted cordon",
       "origin": "China",
-      "favorite_color": "Orange"
+      "owner": 5
     },
     {
       "id": 43,
-      "name": "Alena",
-      "species": "Topi",
-      "origin": "Russia",
-      "favorite_color": "Mauv"
+      "name": "Carolee",
+      "species": "Common turkey",
+      "origin": "China",
+      "owner": 33
     },
     {
       "id": 44,
-      "name": "Dacie",
-      "species": "Bushbuck",
-      "origin": "Belarus",
-      "favorite_color": "Mauv"
+      "name": "Willow",
+      "species": "Fox, pampa gray",
+      "origin": "Vietnam",
+      "owner": 30
     },
     {
       "id": 45,
-      "name": "Dulcea",
-      "species": "African black crake",
-      "origin": "China",
-      "favorite_color": "Mauv"
+      "name": "Marla",
+      "species": "Falcon, prairie",
+      "origin": "Ireland",
+      "owner": 39
     },
     {
       "id": 46,
-      "name": "Wolfgang",
-      "species": "Javan gold-spotted mongoose",
-      "origin": "China",
-      "favorite_color": "Mauv"
+      "name": "Eve",
+      "species": "Tyrant flycatcher",
+      "origin": "Brazil",
+      "owner": 17
     },
     {
       "id": 47,
-      "name": "Jim",
-      "species": "Yellow-billed stork",
-      "origin": "Brazil",
-      "favorite_color": "Violet"
+      "name": "Hadleigh",
+      "species": "Porcupine, indian",
+      "origin": "Poland",
+      "owner": 46
     },
     {
       "id": 48,
-      "name": "Kylen",
-      "species": "White stork",
-      "origin": "Madagascar",
-      "favorite_color": "Khaki"
+      "name": "Roddy",
+      "species": "Western palm tanager (unidentified)",
+      "origin": "Indonesia",
+      "owner": 34
     },
     {
       "id": 49,
-      "name": "Nathanil",
-      "species": "Bee-eater, carmine",
-      "origin": "Czech Republic",
-      "favorite_color": "Aquamarine"
+      "name": "Pierrette",
+      "species": "Cormorant, neotropic",
+      "origin": "Canada",
+      "owner": 30
     },
     {
       "id": 50,
-      "name": "Pier",
-      "species": "Albatross, waved",
-      "origin": "Guinea",
-      "favorite_color": "Red"
+      "name": "Kelci",
+      "species": "Small Indian mongoose",
+      "origin": "Kuwait",
+      "owner": 4
     }
-]
+  ]
