@@ -27,20 +27,22 @@ if (isset($_GET["limit"])) {
 }
 
 
-    if (isset($_GET["ids"])) {
-        $ids = explode(",", $_GET["ids"]);
-        $usersById = [];
+if (isset($_GET["id"])) {
+    $ids = explode(",", $_GET["id"]);
+    $usersById = [];
 
-        foreach ($allUsers as $user) {
-            if (in_array($user["id"], $ids)) {
-                $usersById[] = $user;
-            }
+    foreach ($allUsers as $user) {
+        if (in_array($user["id"], $ids)) {
+            $usersById[] = $user;
         }
+    }
 
-    sendJson($allUsers);
-    echo '<pre>';
-    echo var_dump($allUsers);
-    echo '</pre>';
+    sendJson($usersById);
     exit();
+}else{
+    $json = json_encode(["message"=>"User does not exist"]);
+    sendJson($json, 400);
 }
+
+sendJson($allUsers);
 ?>
