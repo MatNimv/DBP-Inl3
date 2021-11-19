@@ -27,12 +27,12 @@ if (isset($_GET["limit"])) {
 
 //Hitta owners baserat på id
 if (isset($_GET["id"])) {
-    $ids = explode(",", $_GET["id"]);
+    $id = $_GET["id"];
     $ownersById = [];
     
     //Skapa tom array för id owners
     foreach ($allOwners as $owner) {
-        if (in_array($owner["id"], $ids)) {
+        if ($owner["id"] == $id) {
             $ownersById[] = $owner;
         }
     }
