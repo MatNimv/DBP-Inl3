@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(-1);
 //denna funktion ska skicka ut en JSON till användaren.
 //får det som ett meddelande i en asso array, och även
 //en http-kod som visar om det gått rätt eller fel.
@@ -63,10 +63,10 @@ function theHighestId($array)
     return $userID;
 }
 
-//en funktion som "skriver ut" värdet. Funkar bara i webbläsaren.
-function inspect($variable)
-{
-    echo '<pre>';
-    echo var_dump($variable);
-    echo '</pre>';
-}
+// function checkOwnerIdentity($array)
+// {
+//     $ownerID = 0;
+//     foreach($array as $obj){
+//         if ($obj["id"] == ownerID )
+//     }
+// }
