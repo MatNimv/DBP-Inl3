@@ -341,5 +341,32 @@
         "species": "Small Indian mongoose",
         "origin": "Kuwait",
         "owner": 4
+    },
+    {
+        "id": 51,
+        "name": "Orton",
+        "species": "Pine siskin",
+        "origin": "South Africa"
+    },
+    {
+        "id": 52,
+        "name": "Orton",
+        "species": "Pine siskin",
+        "origin": "South Africa",
+        "owner": 6
+    },
+    {
+        "id": 53,
+        "name": "Orton",
+        "species": "Pine siskin",
+        "origin": "South Africa",
+        "owner": 7
+    },
+    {
+        "id": 54,
+        "name": "Orton",
+        "species": "Pine siskin",
+        "origin": "South Africa",
+        "owner": 1
     }
 ]
