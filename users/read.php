@@ -24,15 +24,15 @@ if (isset($_GET["limit"])) {
 }
 
 
-    if (isset($_GET["ids"])) {
-        $ids = explode(",", $_GET["ids"]);
-        $usersById = [];
+if (isset($_GET["ids"])) {
+    $ids = explode(",", $_GET["ids"]);
+    $usersById = [];
 
-        foreach ($users as $user) {
-            if (in_array($user["id"], $ids)) {
-                $usersById[] = $user;
-            }
+    foreach ($users as $user) {
+        if (in_array($user["id"], $ids)) {
+            $usersById[] = $user;
         }
+    }
 
     sendJson($usersById);
 }
@@ -40,8 +40,8 @@ if (isset($_GET["limit"])) {
 echo '<pre>';
 echo var_dump($users);
 echo '</pre>';
-sendJson($users); 
-}
+sendJson($users);
+
 
 
 ?>
