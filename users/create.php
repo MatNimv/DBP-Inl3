@@ -15,7 +15,7 @@ $rqstData = json_decode($data, true);
 //Kollar om metoden är post
 if ($rqstMethod == "POST") {
     //Kollar att alla fälten är ifyllda
-    if (isset($rqstData["first_name"], $rqstData["last_name"], $rqstData["gender"], $rqstData["pet"])) {
+    if (isset($rqstData["first_name"], $rqstData["last_name"], $rqstData["gender"], $rqstData["age"])) {
         $firstName = $rqstData["first_name"];
         $lastName = $rqstData["last_name"];
         $gender = $rqstData["gender"];
