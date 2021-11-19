@@ -53,7 +53,7 @@ if ($method === "PATCH"){
                         $firstName = $requestData["first_name"];
 
                         if (strlen($firstName) == 0){
-                            //om firstname har inte har mer än 0 bokstäver
+                            //om firstname 0 bokstäver
                             sendJson([
                                 "message" => "Bad Request, invalid format",
                                 "errors" => [
@@ -70,7 +70,7 @@ if ($method === "PATCH"){
                         $lastName = $requestData["last_name"];
 
                         if (strlen($lastName) == 0){
-                            //om lastname har inte har mer än 0 bokstäver
+                            //om lastname har 0 bokstäver
                             sendJson([
                                 "message" => "Bad Request, invalid format",
                                 "errors" => [
@@ -86,12 +86,12 @@ if ($method === "PATCH"){
                     if (isset($requestData["gender"])){
                         $gender = $requestData["gender"];
 
-                        if (strlen($gender) == 0){
-                            //om gender inte har mer än 0 tecken.
+                        if (strlen($gender) <= 1){
+                            //om gender inte har mer än 1 tecken.
                             sendJson([
                                 "message" => "Bad Request, invalid format",
                                 "errors" => [
-                                    "message" => "Please write a gender."
+                                    "message" => "Please write more than 1 letter for your gender."
                                 ]
                             ],400);
                         }
@@ -100,21 +100,21 @@ if ($method === "PATCH"){
                         array_push($keyNotSetArr, "gender");
                     }
 
-                    if (isset($requestData["pet"])){
-                        $pet = $requestData["pet"];
+                    if (isset($requestData["age"])){
+                        $age = $requestData["age"];
 
-                        if (strlen($pet) == 0){
-                            //om pet inte har mer än 0 bostäver
+                        if ($age <= 12){
+                            //om åldern inte är mer än 12
                             sendJson([
                                 "message" => "Bad Request, invalid format",
                                 "errors" => [
-                                    "message" => "Please write a pet."
+                                    "message" => "A number higher than 12 for age is required."
                                 ]
                             ],400);
                         }
-                    $user["pet"] = $pet;
+                    $user["age"] = $age;
                     } else {
-                        array_push($keyNotSetArr, "pet");
+                        array_push($keyNotSetArr, "age");
                     }
 
                     //uppdaterar användaren.
@@ -134,7 +134,7 @@ if ($method === "PATCH"){
                 }
                 sendJson([
                     "User" => $foundUser,
-                    "Keys not changed. Check your spelling." => $messageArr
+                    "Keys not changed. If this seems wrong, please check your spelling." => $messageArr
                 ]);
             } else { //annars skickas bara hela användaren.
                 sendJson([
