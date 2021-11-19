@@ -3,7 +3,7 @@
 require_once "../functions.php";
 
 //Ladda in vår JSON-data från fil
-$users = loadJSON("users.json");
+$owners = loadJSON("owners.json");
 
 //Vilken HTTP-metod vi tog emot samt vilken sorts content det är
 $rqstMethod = $_SERVER["REQUEST_METHOD"];
@@ -76,19 +76,19 @@ if ($rqstMethod == "POST") {
             //Om check är sant så skapar vi den nya användaren.
             if ($check) {
                 //Hittar det högsta ID:et
-                $highestID = theHighestId($users);
+                $highestID = theHighestId($owners);
                 //Skapar den nya användaren i rätt ordning
-                $newUser = array(
+                $newOwner = array(
                     "id" => $highestID,
                     "first_name" => $firstName,
                     "last_name" => $lastName,
                     "gender" => $gender,
                     "age" => $age
                 );
-                array_push($users, $newUser);
+                array_push($users, $newOwner);
 
                 saveJson("users.json", $users);
-                sendJson($newUser, 201);
+                sendJson($newOwner, 201);
                 exit();
             }
             //Om alla fälten inte är ifyllda skickas det ut ett felmeddelande.

@@ -4,7 +4,7 @@ require_once "../functions.php";
 
 //Ladda in vår JSON-data från fil
 $pets = loadJSON("pets.json");
-$owners = loadJSON("../users/users.json");
+$owners = loadJSON("../owners/owners.json");
 
 //Hittar ägarnas ID
 $ownersID = array_column($owners, "id");
