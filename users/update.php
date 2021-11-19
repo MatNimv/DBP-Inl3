@@ -15,6 +15,9 @@ require_once "../functions.php";
 //    last_name
 //    gender 
 //    pet 
+//    OCH om det är en nyckel som inte skickas med
+//    "nyckel"
+//    "nyckel" osv
 //}
 
 //variabel för metoden.
@@ -42,6 +45,7 @@ if ($method === "PATCH"){
             foreach($allUsers as $index => $user){
                 if ($user["id"] == $id){
                     $found = true;
+                    $keyNotSetArr = [];
 
                     //kontrollerar alla nycklar och om de är tomma. 
                     //Om den har skickats med ändras valuen.
@@ -58,6 +62,8 @@ if ($method === "PATCH"){
                             ],400);
                         }
                     $user["first_name"] = $firstName;
+                    } else {
+                        array_push($keyNotSetArr, "first_name");
                     }
 
                     if (isset($requestData["last_name"])){
@@ -73,6 +79,8 @@ if ($method === "PATCH"){
                             ],400);
                         }
                     $user["last_name"] = $lastName;
+                    } else {
+                        array_push($keyNotSetArr, "last_name");
                     }
 
                     if (isset($requestData["gender"])){
@@ -88,6 +96,8 @@ if ($method === "PATCH"){
                             ],400);
                         }
                     $user["gender"] = $gender;
+                    } else {
+                        array_push($keyNotSetArr, "gender");
                     }
 
                     if (isset($requestData["pet"])){
@@ -103,9 +113,10 @@ if ($method === "PATCH"){
                             ],400);
                         }
                     $user["pet"] = $pet;
+                    } else {
+                        array_push($keyNotSetArr, "pet");
                     }
 
-                    sendJson([$requestData]);
                     //uppdaterar användaren.
                     $allUsers[$index] = $user;
                     $foundUser = $user;
@@ -114,7 +125,21 @@ if ($method === "PATCH"){
             }
             //uppdaterar databasen.
             saveJson("users.json", $allUsers);
-            sendJson($foundUser);
+
+            //om det är nycklar som inte skickats in, skrivs de ut med användaren.
+            if (count($keyNotSetArr) >= 1){
+                $messageArr = [];
+                foreach($keyNotSetArr as $oneKey){
+                    array_push($messageArr, $oneKey);
+                }
+                sendJson([
+                    "User" => $foundUser,
+                    "Keys not changed. Check your spelling." => $messageArr
+                ]);
+            } else { //annars skickas bara hela användaren.
+                sendJson([
+                    "User" => $foundUser]);
+            }
 
             //om id inte finns i databasen.
             if ($found == false){
