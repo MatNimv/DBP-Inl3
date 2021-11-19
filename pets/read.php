@@ -51,7 +51,9 @@ if ($requestMethod === "GET") {
     $json = json_encode(["message" => "Method is not allowed!"]);
     sendJson($data, 405);
     exit();
+
 }
+
 
 //Skicka alla djur
 sendJson($allPets);
