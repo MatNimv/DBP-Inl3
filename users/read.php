@@ -16,11 +16,12 @@ if ($requestMethod === "GET") {
             }
         }
     }
-    if (isset($_GET["limit"])) {
-        $limit = $_GET["limit"];
-        $slicedUsers = array_slice($users, 0, $limit);
-        sendJson($slicedUsers);
-    }
+}
+if (isset($_GET["limit"])) {
+    $limit = $_GET["limit"];
+    $slicedUsers = array_slice($users, 0, $limit);
+    sendJson($slicedUsers);
+}
 
 
     if (isset($_GET["ids"])) {
@@ -33,10 +34,13 @@ if ($requestMethod === "GET") {
             }
         }
 
-        sendJson($usersById);
-    }
+    sendJson($usersById);
+}
 
-    sendJson($users);
+echo '<pre>';
+echo var_dump($users);
+echo '</pre>';
+sendJson($users); 
 }
 
 
