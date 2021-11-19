@@ -1,8 +1,8 @@
 <?php
 require_once "../functions.php";
 
-$allUsers = loadJson("users.json");
-$allPets = loadJson("../pets.json");
+$allUsers = loadJson("../users.json");
+$allPets = loadJson("pets.json");
 ?>
 <?php
 $requestMethod = $_SERVER["REQUEST_METHOD"];
@@ -20,7 +20,7 @@ if ($requestMethod === "GET") {
 }
 if (isset($_GET["limit"])) {
     $limit = $_GET["limit"];
-    $slicedUsers = array_slice($allUsers, 0, $limit);
+    $slicedUsers = array_slice($allPets, 0, $limit);
     sendJson($slicedUsers);
     exit();
    
@@ -28,12 +28,12 @@ if (isset($_GET["limit"])) {
 
 
 if (isset($_GET["id"])) {
-    $ids = explode(",", $_GET["id"]);
+    $id = $_GET["id"];
     $petsById = [];
 
     foreach ($allPets as $pet) {
-        if (in_array($user["id"], $ids)) {
-            $petsById[] = $user;
+        if ($pet["id"] == $id) {
+            $petsById[] = $pet;
         }
     } if(count($petsById)==0){
         $json = json_encode(["message"=>"User does not exist"]);
@@ -41,9 +41,9 @@ if (isset($_GET["id"])) {
     }
     
 
-    sendJson($usersById);
+    sendJson($petsById);
     exit();
 }
 
-sendJson($allUsers);
+sendJson($allPets);
 ?>
