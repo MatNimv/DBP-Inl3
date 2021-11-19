@@ -13,7 +13,6 @@ if ($requestMethod === "GET") {
             if ($user["first_name"] == $_GET["first_name"]) {
                 sendJson($allUsers[$user]);
                 exit();
-            
             }
         }
     }
@@ -23,7 +22,6 @@ if (isset($_GET["limit"])) {
     $slicedUsers = array_slice($allUsers, 0, $limit);
     sendJson($slicedUsers);
     exit();
-   
 }
 
 
@@ -35,11 +33,12 @@ if (isset($_GET["id"])) {
         if (in_array($user["id"], $ids)) {
             $usersById[] = $user;
         }
-    } if(count($usersById)==0){
-        $json = json_encode(["message"=>"User does not exist"]);
+    }
+    if (count($usersById) == 0) {
+        $json = json_encode(["message" => "User does not exist"]);
         sendJson($json, 400);
     }
-    
+
 
     sendJson($usersById);
     exit();

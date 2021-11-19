@@ -1,4 +1,5 @@
 <?php
+//Kopplar functions.php
 require_once "../functions.php";
 
 //Ladda in vår JSON-data från fil
@@ -23,10 +24,55 @@ if ($rqstMethod == "POST") {
 
         $check = true;
 
-        if (strlen($firstName) < 2 || strlen($lastName) < 2 || strlen($gender) < 1 || $age < 13) {
+        //Kollar om förnamnet innehåller minst 2 bokstäver
+        if (strlen($firstName) < 2) {
             $check = false;
-        }
 
+            $json = json_encode(
+                [
+                    "first_name" => "First name has to have at least 2 characters",
+                ]
+            );
+            sendJson($json, 400);
+            exit();
+        }
+        //Kollar om efternamnet innehåller minst 2 bokstäver
+        if (strlen($lastName) < 2) {
+            $check = false;
+
+            $json = json_encode(
+                [
+                    "last_name" => "Last name has to have at least 2 characters",
+                ]
+            );
+            sendJson($json, 400);
+            exit();
+        }
+        //Kollar om kön innehåller minst 1 bokstav
+        if (strlen($gender) < 1) {
+            $check = false;
+
+            $json = json_encode(
+                [
+                    "gender" => "Please add at least one character to your gender",
+                ]
+            );
+            sendJson($json, 400);
+            exit();
+        }
+        //Kollar om personen är minst 13 år eller högst lika gammal som Bilbo Baggins.
+        if ($age < 13 || $age > 111) {
+            $check = false;
+
+            $json = json_encode(
+                [
+                    "age" => "You can not be younger than 13 nor older than 111",
+                ]
+            );
+            sendJson($json, 400);
+            exit();
+        }
+        //Om check är sant så skapar vi den nya användaren.
         if ($check) {
             //Hittar det högsta ID:et
             $highestID = theHighestId($users);
@@ -42,24 +88,17 @@ if ($rqstMethod == "POST") {
 
             saveJson("users.json", $users);
             sendJson($newUser, 201);
-        } else {
-            $json = json_encode(
-                [
-                    "message" => "Bad Request - (check the fields once again)",
-                    "first_name" => "Has to be more than 2 characters",
-                    "last_name" => "Has to be more than 2 characters",
-                    "gender" => "Has to be more than 2 characters",
-                    "age" => "You can not be younger than 13"
-
-                ]
-            );
-            sendJson($json, 400);
+            exit();
         }
+        //Om alla fälten inte är ifyllda skickas det ut ett felmeddelande.
     } else {
         $json = json_encode(["message" => "Bad Request - (all the fields has to be filled)"]);
         sendJson($json, 400);
+        exit();
     }
+    //Om GET inte är POST skickas det ut ett felmeddelande. 
 } else {
     $json = json_encode(["message" => "Method is not allowed!"]);
     sendJson($data, 405);
+    exit();
 }
