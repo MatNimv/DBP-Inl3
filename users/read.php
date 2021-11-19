@@ -38,11 +38,24 @@ if (isset($_GET["id"])) {
         $json = json_encode(["message" => "User does not exist"]);
         sendJson($json, 400);
     }
-
-
-    sendJson($usersById);
-    exit();
 }
 
-sendJson($allUsers);
+    //om det finns AGE i URL.
+    if(isset($_GET["age"])){
+        $age = $_GET["age"];
+        $ageArray = [];
+
+        foreach($allUsers as $user){
+            if ($user["age"] == $age){
+                array_push($ageArray, $user);
+            }
+        } //om det inte finns användare i den specifika åldern.
+        if (count($ageArray)== 0){
+            sendJson(["message" => "No users at this age."]);
+        } else { //annars skickar den ut alla med den specifika åldern.
+            sendJson($ageArray);
+        }
+    } else { //om inte det finns AGE, skickas alla användare ut ändå.
+        sendJson($allUsers);
+    }
 ?>
