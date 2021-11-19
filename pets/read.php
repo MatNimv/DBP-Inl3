@@ -7,7 +7,7 @@ $allPets = loadJson("pets.json");
 <?php
 $requestMethod = $_SERVER["REQUEST_METHOD"];
 if ($requestMethod === "GET") {
-    //first_name
+    //hitta djur basserat på "name"
     if (isset($_GET["name"])) {
         foreach ($allPets as $pet => $pet) {
             if ($pet["name"] == $_GET["name"]) {
@@ -18,6 +18,7 @@ if ($requestMethod === "GET") {
         }
     }
 }
+//Maximalt antal djur
 if (isset($_GET["limit"])) {
     $limit = $_GET["limit"];
     $slicedUsers = array_slice($allPets, 0, $limit);
@@ -26,7 +27,7 @@ if (isset($_GET["limit"])) {
    
 }
 
-
+//hitta djur bassserat på id
 if (isset($_GET["id"])) {
     $id = $_GET["id"];
     $petsById = [];
@@ -35,6 +36,7 @@ if (isset($_GET["id"])) {
         if ($pet["id"] == $id) {
             $petsById[] = $pet;
         }
+    //ifall id inte finns, skicka felmeddelande
     } if(count($petsById)==0){
         $json = json_encode(["message"=>"User does not exist"]);
         sendJson($json, 400);
@@ -44,6 +46,6 @@ if (isset($_GET["id"])) {
     sendJson($petsById);
     exit();
 }
-
+//Skicka alla djur
 sendJson($allPets);
 ?>
