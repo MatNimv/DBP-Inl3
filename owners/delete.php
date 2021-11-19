@@ -23,7 +23,7 @@ $method = $_SERVER["REQUEST_METHOD"];
 $contentType = $_SERVER["CONTENT_TYPE"];
 
 //får ut ALLA användare från databasen.
-$allUsers = loadJSON("users.json");
+$allOwners = loadJSON("owners.json");
 
 //allt utförs ENDAST om metoden är DELETE.
 if ($method === "DELETE"){
@@ -32,17 +32,17 @@ if ($method === "DELETE"){
         $found = false;
         $id = $requestData["id"];
 
-        $foundUser = null;
+        $foundOwner = null;
 
         if (!isset($id)){ //om id inte ens finns i URl.
             sendJson(["message" => "Bad Request. ID must be included."],400);
         }
 
-        foreach ($allUsers as $index => $user){
-            if($user["id"] == $id){
+        foreach ($allOwners as $index => $owner){
+            if($owner["id"] == $id){
                 $found = true;
-                array_splice($allUsers, $index, 1);
-                $foundUser = $user;
+                array_splice($allOwners, $index, 1);
+                $foundOwner = $owner;
                 break;
             } 
         }
@@ -51,15 +51,14 @@ if ($method === "DELETE"){
         }
 
         //sparar den "uppdaterade" users.json filen.
-        saveJson("users.json", $allUsers);
+        saveJson("owners.json", $allOwners);
         //meddelar vilket id samt hela användaren som togs bort
         sendJson([
-            "message" => "You removed this user ID:$id",
-            "user" => $user]);
+            "message" => "You removed this owner ID:$id",
+            "owner" => $owner]);
         } else { //om contenttype inte är application/json.
             sendJson(["message" => "Bad Request."], 400);
         }
     } else { //alla andra metoder än DELETE.
         sendJson(["message" => "Method is not allowed."], 405);
     }
-?>

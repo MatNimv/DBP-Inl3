@@ -348,19 +348,5 @@
         "last_name": "Lukock",
         "gender": "Gender Variant",
         "age": 93
-    },
-    {
-        "id": 51,
-        "first_name": "Olivia",
-        "last_name": "Brodden",
-        "gender": "Cis female",
-        "age": 26
-    },
-    {
-        "id": 52,
-        "first_name": "Matilda",
-        "last_name": "Nimvik",
-        "gender": "Female",
-        "age": 22
     }
-  ]
+]
