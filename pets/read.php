@@ -8,10 +8,10 @@ $allPets = loadJson("../pets.json");
 $requestMethod = $_SERVER["REQUEST_METHOD"];
 if ($requestMethod === "GET") {
     //first_name
-    if (isset($_GET["first_name"])) {
-        foreach ($allUsers as $user => $user) {
-            if ($user["first_name"] == $_GET["first_name"]) {
-                sendJson($allUsers[$user]);
+    if (isset($_GET["name"])) {
+        foreach ($allPets as $pet => $pet) {
+            if ($pet["name"] == $_GET["name"]) {
+                sendJson($allPets[$pet]);
                 exit();
             
             }
@@ -29,13 +29,13 @@ if (isset($_GET["limit"])) {
 
 if (isset($_GET["id"])) {
     $ids = explode(",", $_GET["id"]);
-    $usersById = [];
+    $petsById = [];
 
-    foreach ($allUsers as $user) {
+    foreach ($allPets as $pet) {
         if (in_array($user["id"], $ids)) {
-            $usersById[] = $user;
+            $petsById[] = $user;
         }
-    } if(count($usersById)==0){
+    } if(count($petsById)==0){
         $json = json_encode(["message"=>"User does not exist"]);
         sendJson($json, 400);
     }
