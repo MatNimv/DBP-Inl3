@@ -8,64 +8,59 @@ $allPets = loadJson("../pets.json");
 $requestMethod = $_SERVER["REQUEST_METHOD"];
 
 if ($requestMethod === "GET") {
-    if ($contentType === "application/json") {
-        //Hitta owner basserat på first_name
-        if (isset($_GET["first_name"])) {
-            foreach ($allOwners as $owner => $owner) {
-                if ($owner["first_name"] == $_GET["first_name"]) {
-                    sendJson($allOwners[$owner]);
-                    exit();
-                }
+    //Hitta owner basserat på first_name
+    if (isset($_GET["first_name"])) {
+        foreach ($allOwners as $owner => $owner) {
+            if ($owner["first_name"] == $_GET["first_name"]) {
+                sendJson($allOwners[$owner]);
+                exit();
             }
         }
+    }
 
-        //skapa ett maximalt antal owners i arrayn
-        if (isset($_GET["limit"])) {
-            $limit = $_GET["limit"];
-            $slicedOwners = array_slice($allOwners, 0, $limit);
-            sendJson($slicedOwners);
-            exit();
-        }
+    //skapa ett maximalt antal owners i arrayn
+    if (isset($_GET["limit"])) {
+        $limit = $_GET["limit"];
+        $slicedOwners = array_slice($allOwners, 0, $limit);
+        sendJson($slicedOwners);
+        exit();
+    }
 
-        //Hitta owners baserat på id
-        if (isset($_GET["id"])) {
-            $id = $_GET["id"];
-            $ownersById = [];
+    //Hitta owners baserat på id
+    if (isset($_GET["id"])) {
+        $id = $_GET["id"];
+        $ownersById = [];
 
-            //Skapa tom array för id owners
-            foreach ($allOwners as $owner) {
-                if ($owner["id"] == $id) {
-                    $ownersById[] = $owner;
-                }
-            }
-            //Om inte id finns, skicka felmeddelande
-            if (count($ownersById) == 0) {
-                $json = json_encode(["message" => "Owner does not exist"]);
-                sendJson($json, 400);
+        //Skapa tom array för id owners
+        foreach ($allOwners as $owner) {
+            if ($owner["id"] == $id) {
+                $ownersById[] = $owner;
             }
         }
-
-        //om det finns AGE i URL.
-        if (isset($_GET["age"])) {
-            $age = $_GET["age"];
-            $ageArray = [];
-
-            foreach ($allOwners as $owner) {
-                if ($owner["age"] == $age) {
-                    array_push($ageArray, $owner);
-                }
-            } //om det inte finns användare i den specifika åldern.
-            if (count($ageArray) == 0) {
-                sendJson(["message" => "No owner at this age."]);
-            } else { //annars skickar den ut alla med den specifika åldern.
-                sendJson($ageArray);
-            }
-        } else { //om inte det finns AGE, skickas alla användare ut ändå.
-            sendJson($allOwners);
+        //Om inte id finns, skicka felmeddelande
+        if (count($ownersById) == 0) {
+            $json = json_encode(["message" => "Owner does not exist"]);
+            sendJson($json, 400);
         }
-        //Om formatet inte är JSON skickas det ut ett felmeddelande.
-    } else {
-        sendJson(["message" => "Bad Request."], 400);
+    }
+
+    //om det finns AGE i URL.
+    if (isset($_GET["age"])) {
+        $age = $_GET["age"];
+        $ageArray = [];
+
+        foreach ($allOwners as $owner) {
+            if ($owner["age"] == $age) {
+                array_push($ageArray, $owner);
+            }
+        } //om det inte finns användare i den specifika åldern.
+        if (count($ageArray) == 0) {
+            sendJson(["message" => "No owner at this age."]);
+        } else { //annars skickar den ut alla med den specifika åldern.
+            sendJson($ageArray);
+        }
+    } else { //om inte det finns AGE, skickas alla användare ut ändå.
+        sendJson($allOwners);
     }
     //Om GET inte är GET skickas det ut ett felmeddelande. 
 } else {
