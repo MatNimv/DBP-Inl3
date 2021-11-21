@@ -28,6 +28,13 @@
         "owner": 44
     },
     {
+        "id": 5,
+        "name": "Marla",
+        "species": "Tortoise, radiated",
+        "origin": "Colombia",
+        "owner": 10
+    },
+    {
         "id": 6,
         "name": "Lucien",
         "species": "Dove, laughing",
@@ -341,6 +348,7 @@
         "species": "Small Indian mongoose",
         "origin": "Kuwait",
         "owner": 4
+<<<<<<< Updated upstream
     },
     {
         "id": 51,
@@ -375,5 +383,7 @@
         "species": "Pine siskin",
         "origin": "South Africa",
         "owner": 1
+=======
+>>>>>>> Stashed changes
     }
 ]
