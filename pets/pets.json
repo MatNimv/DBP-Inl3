@@ -28,6 +28,13 @@
         "owner": 44
     },
     {
+        "id": 5,
+        "name": "Marla",
+        "species": "Tortoise, radiated",
+        "origin": "Colombia",
+        "owner": 10
+    },
+    {
         "id": 6,
         "name": "Lucien",
         "species": "Dove, laughing",
@@ -341,32 +348,5 @@
         "species": "Small Indian mongoose",
         "origin": "Kuwait",
         "owner": 4
-    },
-    {
-        "id": 51,
-        "name": "Orton",
-        "species": "Pine siskin",
-        "origin": "South Africa"
-    },
-    {
-        "id": 52,
-        "name": "Orton",
-        "species": "Pine siskin",
-        "origin": "South Africa",
-        "owner": 6
-    },
-    {
-        "id": 53,
-        "name": "Orton",
-        "species": "Pine siskin",
-        "origin": "South Africa",
-        "owner": 7
-    },
-    {
-        "id": 54,
-        "name": "Orton",
-        "species": "Pine siskin",
-        "origin": "South Africa",
-        "owner": 1
     }
 ]
