@@ -1,12 +1,12 @@
 <?php
 require_once "../functions.php";
-
+//Hämtar alla ägare från arrayn.
 $allOwners = loadJson("owners.json");
-$allPets = loadJson("../pets.json");
+
 ?>
 <?php
 $requestMethod = $_SERVER["REQUEST_METHOD"];
-
+//Kontrollerare om metoden är GET.
 if ($requestMethod === "GET") {
     //Hitta owner basserat på first_name
     if (isset($_GET["first_name"])) {
@@ -17,13 +17,16 @@ if ($requestMethod === "GET") {
             }
         }
     }
+    //Om GET innehåller "ids" skapar den en ny array
+    if (isset($_GET["ids"])) {
+        $ids = explode(",", $_GET["ids"]);
+        $ownersById = [];
 
-    //skapa ett maximalt antal owners i arrayn
-    if (isset($_GET["limit"])) {
-        $limit = $_GET["limit"];
-        $slicedOwners = array_slice($allOwners, 0, $limit);
-        sendJson($slicedOwners);
-        exit();
+        foreach ($allOwners as $owner) {
+            if (in_array($owner["id"], $ids)) {
+                $ownersById[] = $owner;
+            }
+        }
     }
 
     //Hitta owners baserat på id
@@ -41,7 +44,10 @@ if ($requestMethod === "GET") {
         if (count($ownersById) == 0) {
             $json = json_encode(["message" => "Owner does not exist"]);
             sendJson($json, 400);
+            exit();
         }
+        sendJson($ownersById);
+        exit();
     }
 
     //om det finns AGE i URL.
@@ -53,17 +59,20 @@ if ($requestMethod === "GET") {
             if ($owner["age"] == $age) {
                 array_push($ageArray, $owner);
             }
-        } //om det inte finns användare i den specifika åldern.
+            $allOwners = $ageArray;
+        } //om det inte finns användare från det specifika landet.
         if (count($ageArray) == 0) {
             sendJson(["message" => "No owner at this age."]);
-        } else { //annars skickar den ut alla med den specifika åldern.
-            sendJson($ageArray);
         }
-    } else { //om inte det finns AGE, skickas alla användare ut ändå.
+    }
+    if (isset($_GET["limit"])) { //skickar ut antal som finns i limit
+        $limit = $_GET["limit"];
+        $slicedOwners = array_slice($allOwners, 0, $limit);
+        sendJson($slicedOwners);
+    } else {
         sendJson($allOwners);
     }
-    //Om GET inte är GET skickas det ut ett felmeddelande. 
-} else {
+} else { //Skickar ut ett felmeddalnde om metoden inte är json.
     $json = json_encode(["message" => "Method is not allowed!"]);
     sendJson($data, 405);
     exit();

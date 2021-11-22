@@ -1,6 +1,6 @@
 <?php
 error_reporting(-1);
-//denna funktion ska skicka ut en JSON till användaren.
+//denna funktion skickar ut en JSON till användaren.
 //får det som ett meddelande i en asso array, och även
 //en http-kod som visar om det gått rätt eller fel.
 function sendJson($data, $statusCode = 200)
@@ -23,7 +23,7 @@ function loadJSON($fileName)
 {
     if (file_exists($fileName) == true) {
         //om filen finns (är true) - då
-        //gör JSONdatan till en asso array
+        //gör JSON-datan till en asso array
         $data = file_get_contents("$fileName");
         $dataContent = json_decode($data, true);
         return $dataContent;
@@ -62,11 +62,3 @@ function theHighestId($array)
     $userID = $userID + 1;
     return $userID;
 }
-
-// function checkOwnerIdentity($array)
-// {
-//     $ownerID = 0;
-//     foreach($array as $obj){
-//         if ($obj["id"] == ownerID )
-//     }
-// }

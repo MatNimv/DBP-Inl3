@@ -73,7 +73,7 @@ if ($rqstMethod == "POST") {
                 sendJson($json, 400);
                 exit();
             }
-            //Om check är sant så skapar vi den nya användaren.
+            //Om check är true så skapar vi den nya ägaren.
             if ($check) {
                 //Hittar det högsta ID:et
                 $highestID = theHighestId($owners);
@@ -85,9 +85,9 @@ if ($rqstMethod == "POST") {
                     "gender" => $gender,
                     "age" => $age
                 );
-                array_push($users, $newOwner);
+                array_push($owners, $newOwner);
 
-                saveJson("users.json", $users);
+                saveJson("owners.json", $owners);
                 sendJson($newOwner, 201);
                 exit();
             }
@@ -100,6 +100,7 @@ if ($rqstMethod == "POST") {
         //Om formatet inte är JSON skickas det ut ett felmeddelande.
     } else {
         sendJson(["message" => "Bad Request."], 400);
+        exit();
     }
     //Om GET inte är POST skickas det ut ett felmeddelande. 
 } else {

@@ -30,89 +30,93 @@ $data = file_get_contents("php://input");
 $requestData = json_decode($data, true);
 
 //utförs om metoden ENDAST är patch.
-if ($method === "PATCH"){
+if ($method === "PATCH") {
     //utförs endast om det är json.
-    if ($contentType === "application/json"){
-        //kollar om användaren har skickat med id.
-        if (isset($requestData["id"])){
+    if ($contentType === "application/json") {
+        //kollar om ägaren har skickat med id.
+        if (isset($requestData["id"])) {
 
             $id = $requestData["id"];
             $found = false;
             $foundPet = null;
             //ALLA användare från users.json
             $allPets = loadJSON("pets.json");
-
-            foreach($allPets as $index => $pet){
-                if ($pet["id"] == $id){
+            //Letar upp djurets id och redigerar innehållet.
+            foreach ($allPets as $index => $pet) {
+                if ($pet["id"] == $id) {
                     $found = true;
                     $keyNotSetArr = [];
 
                     //kontrollerar alla nycklar och om de är tomma. 
                     //Om den har skickats med ändras valuen.
-                    if (isset($requestData["name"])){
+                    if (isset($requestData["name"])) {
                         $name = $requestData["name"];
 
-                        if (strlen($name) == 0){
+                        if (strlen($name) == 0) {
                             //om name 0 bokstäver
                             sendJson([
                                 "message" => "Bad Request, invalid format",
                                 "errors" => [
                                     "message" => "Please write a name."
                                 ]
-                            ],400);
+                            ], 400);
+                            exit();
                         }
-                    $pet["name"] = $name;
+                        $pet["name"] = $name;
                     } else {
                         array_push($keyNotSetArr, "name");
                     }
 
-                    if (isset($requestData["species"])){
+                    if (isset($requestData["species"])) {
                         $species = $requestData["species"];
 
-                        if (strlen($species) <= 2){
+                        if (strlen($species) <= 2) {
                             //om species har färre än 3 bokstäver
                             sendJson([
                                 "message" => "Bad Request, invalid format",
                                 "errors" => [
                                     "message" => "Please write a species."
                                 ]
-                            ],400);
+                            ], 400);
+                            exit();
                         }
-                    $pet["species"] = $species;
+                        $pet["species"] = $species;
                     } else {
                         array_push($keyNotSetArr, "species");
                     }
 
-                    if (isset($requestData["origin"])){
+                    if (isset($requestData["origin"])) {
                         $origin = $requestData["origin"];
 
-                        if (strlen($origin) <= 2){
+                        if (strlen($origin) <= 2) {
                             //om origin inte har mer än 2 tecken.
                             sendJson([
                                 "message" => "Bad Request, invalid format",
                                 "errors" => [
                                     "message" => "Please write more than 2 letters for your country."
                                 ]
-                            ],400);
+                            ], 400);
+                            exit();
                         }
-                    $pet["origin"] = $origin;
+                        $pet["origin"] = $origin;
                     } else {
                         array_push($keyNotSetArr, "origin");
                     }
 
-                    if (isset($requestData["owner"])){
+                    if (isset($requestData["owner"])) {
                         $owner = $requestData["owner"];
 
-                        if ($owner == 0){
+                        if ($owner == 0) {
                             //om ägarens ID är 0
                             sendJson([
                                 "message" => "Bad Request, invalid format",
                                 "errors" => [
                                     "message" => "Please provide a valid ID."
                                 ]
-                            ],400);
+                            ], 400);
+                            exit();
                         }
-                    $pet["owner"] = $owner;
+                        $pet["owner"] = $owner;
                     } else {
                         array_push($keyNotSetArr, "owner");
                     }
@@ -127,29 +131,35 @@ if ($method === "PATCH"){
             saveJson("pets.json", $allPets);
 
             //om det är nycklar som inte skickats in, skrivs de ut med användaren.
-            if (count($keyNotSetArr) >= 1){
+            if (count($keyNotSetArr) >= 1) {
                 $messageArr = [];
-                foreach($keyNotSetArr as $oneKey){
+                foreach ($keyNotSetArr as $oneKey) {
                     array_push($messageArr, $oneKey);
                 }
                 sendJson([
                     "Pet" => $foundPet,
                     "Keys not changed. If this seems wrong, please check your spelling." => $messageArr
                 ]);
-            } else { //annars skickas bara hela användaren.
-                sendJson([$foundPet]);}
+                exit();
+            } else { //annars skickas bara hela ägaren.
+                sendJson([$foundPet]);
+                exit();
+            }
 
             //om id inte finns i databasen.
-            if ($found == false){
+            if ($found == false) {
                 sendJson(["message" => "ID was not found."], 404);
+                exit();
             }
         } else { //om id inte är med i requesten.
             sendJson(["message" => "Bad Request. ID must be included"], 400);
+            exit();
         }
-    } else {//om contenttype inte är json
+    } else { //om contenttype inte är json
         sendJson(["message" => "Bad Request."], 400);
+        exit();
     }
 } else { //om metoden inte är PATCH
     sendJson(["message" => "Method is not allowed."], 405);
+    exit();
 }
-?>

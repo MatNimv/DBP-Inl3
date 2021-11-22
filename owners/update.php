@@ -24,95 +24,95 @@ require_once "../functions.php";
 $method = $_SERVER["REQUEST_METHOD"];
 //variabeln för content type.
 $contentType = $_SERVER["CONTENT_TYPE"];
-//all data som användaren skickar in
+//all data som ägaren skickar in
 $data = file_get_contents("php://input");
 //asso array av datan
 $requestData = json_decode($data, true);
 
 //utförs om metoden ENDAST är patch.
-if ($method === "PATCH"){
+if ($method === "PATCH") {
     //utförs endast om det är json.
-    if ($contentType === "application/json"){
-        //kollar om användaren har skickat med id.
-        if (isset($requestData["id"])){
+    if ($contentType === "application/json") {
+        //kollar om ägaren har skickat med id.
+        if (isset($requestData["id"])) {
 
             $id = $requestData["id"];
             $found = false;
             $foundOwner = null;
-            //ALLA användare från users.json
+            //ALLA ägare från users.json
             $allOwners = loadJSON("owners.json");
 
-            foreach($allOwners as $index => $owner){
-                if ($owner["id"] == $id){
+            foreach ($allOwners as $index => $owner) {
+                if ($owner["id"] == $id) {
                     $found = true;
                     $keyNotSetArr = [];
 
                     //kontrollerar alla nycklar och om de är tomma. 
                     //Om den har skickats med ändras valuen.
-                    if (isset($requestData["first_name"])){
+                    if (isset($requestData["first_name"])) {
                         $firstName = $requestData["first_name"];
 
-                        if (strlen($firstName) == 0){
-                            //om firstname 0 bokstäver
+                        if (strlen($firstName) == 0) {
+                            //om first_name har 0 bokstäver
                             sendJson([
                                 "message" => "Bad Request, invalid format",
                                 "errors" => [
                                     "message" => "Please write a first name."
                                 ]
-                            ],400);
+                            ], 400);
                         }
-                    $owner["first_name"] = $firstName;
+                        $owner["first_name"] = $firstName;
                     } else {
                         array_push($keyNotSetArr, "first_name");
                     }
 
-                    if (isset($requestData["last_name"])){
+                    if (isset($requestData["last_name"])) {
                         $lastName = $requestData["last_name"];
 
-                        if (strlen($lastName) == 0){
-                            //om lastname har 0 bokstäver
+                        if (strlen($lastName) == 0) {
+                            //om last_name har 0 bokstäver
                             sendJson([
                                 "message" => "Bad Request, invalid format",
                                 "errors" => [
                                     "message" => "Please write a last name."
                                 ]
-                            ],400);
+                            ], 400);
                         }
-                    $owner["last_name"] = $lastName;
+                        $owner["last_name"] = $lastName;
                     } else {
                         array_push($keyNotSetArr, "last_name");
                     }
 
-                    if (isset($requestData["gender"])){
+                    if (isset($requestData["gender"])) {
                         $gender = $requestData["gender"];
 
-                        if (strlen($gender) <= 1){
+                        if (strlen($gender) <= 1) {
                             //om gender inte har mer än 1 tecken.
                             sendJson([
                                 "message" => "Bad Request, invalid format",
                                 "errors" => [
                                     "message" => "Please write more than 1 letter for your gender."
                                 ]
-                            ],400);
+                            ], 400);
                         }
-                    $owner["gender"] = $gender;
+                        $owner["gender"] = $gender;
                     } else {
                         array_push($keyNotSetArr, "gender");
                     }
 
-                    if (isset($requestData["age"])){
+                    if (isset($requestData["age"])) {
                         $age = $requestData["age"];
 
-                        if ($age <= 12){
+                        if ($age <= 12) {
                             //om åldern inte är mer än 12
                             sendJson([
                                 "message" => "Bad Request, invalid format",
                                 "errors" => [
                                     "message" => "A number higher than 12 for age is required."
                                 ]
-                            ],400);
+                            ], 400);
                         }
-                    $owner["age"] = $age;
+                        $owner["age"] = $age;
                     } else {
                         array_push($keyNotSetArr, "age");
                     }
@@ -126,29 +126,30 @@ if ($method === "PATCH"){
             //uppdaterar databasen.
             saveJson("owners.json", $allOwners);
 
-            //om det är nycklar som inte skickats in, skrivs de ut med användaren.
-            if (count($keyNotSetArr) >= 1){
+            //om det är nycklar som inte skickats in, skrivs de ut med ägaren.
+            if (count($keyNotSetArr) >= 1) {
                 $messageArr = [];
-                foreach($keyNotSetArr as $oneKey){
+                foreach ($keyNotSetArr as $oneKey) {
                     array_push($messageArr, $oneKey);
                 }
                 sendJson([
                     "User" => $foundOwner,
                     "Keys not changed. If this seems wrong, please check your spelling." => $messageArr
                 ]);
-            } else { //annars skickas bara hela användaren.
+            } else { //annars skickas bara hela ägaren.
                 sendJson([
-                    "User" => $foundOwner]);
+                    $foundOwner
+                ]);
             }
 
             //om id inte finns i databasen.
-            if ($found == false){
+            if ($found == false) {
                 sendJson(["message" => "ID was not found."], 404);
             }
         } else { //om id inte är med i requesten.
             sendJson(["message" => "Bad Request. ID must be included"], 400);
         }
-    } else {//om contenttype inte är json
+    } else { //om contenttype inte är json
         sendJson(["message" => "Bad Request."], 400);
     }
 } else { //om metoden inte är PATCH

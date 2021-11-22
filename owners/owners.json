@@ -2,9 +2,9 @@
     {
         "id": 1,
         "first_name": "Matt",
-        "last_name": "Thring",
-        "gender": "Nonbinary",
-        "age": "34"
+        "last_name": "Carlson",
+        "gender": "CIS male",
+        "age": 35
     },
     {
         "id": 2,
@@ -337,9 +337,9 @@
     },
     {
         "id": 50,
-        "first_name": "Ginny",
-        "last_name": "Lukock",
-        "gender": "Gender Variant",
-        "age": 93
+        "first_name": "Matilda",
+        "last_name": "Nimvik",
+        "gender": "Female",
+        "age": 22
     }
 ]
