@@ -9,134 +9,98 @@ $allPets = loadJson("pets.json");
 $requestMethod = $_SERVER["REQUEST_METHOD"];
 
 if ($requestMethod === "GET") {
-    //hitta djur basserat på "name"
-    if (isset($_GET["name"])) {
-        foreach ($allPets as $pet => $pet) {
-            if ($pet["name"] == $_GET["name"]) {
-                sendJson($allPets[$pet]);
-                exit();
-            }
-        }
-    }
 
     if (isset($_GET["include"])){
+        $includedArr = [];
         $isIncluded = $_GET["include"];
-    
+
         //om include är true
-        $ownerOfPet = null;
         if ($isIncluded == "yes"){
-    
             foreach($allPets as $index =>  $pet){
                 //tar fram förnamnet av ägaren till Pet:et
                 $ownersID = array_column($allOwners, "id");
                 $indexOfOwner = array_search($pet["owner"], $ownersID);
                 $ownerOfPet = $allOwners[$indexOfOwner];
                 $ownerOfPet = $ownerOfPet["first_name"];
-    
-                //kollar om djuret har en ägare
-                if (strlen($ownerOfPet) <= 0 ){
-                    $ownerOfPet = "No owner";
-                }
-    
+
                 //variabler till nycklara
                 $id = $pet["id"];
                 $name = $pet["name"];
                 $species = $pet["species"];
                 $origin = $pet["origin"];
-    
-                //gör ett nytt "djur" med ytterligare en extranyckel..
-                $updatedPet = [
+
+                //förnyar "djuret" med ytterligare en extranyckel..
+                $updatedDog = [
                     "id" =>   $id,
                     "name" => $name,
                     "species" => $species,
                     "origin" => $origin,
                     "owner" => [
-                        "name" => $ownerOfPet
+                        "first_name" => $ownerOfPet
                         ]
                     ];
-                    //byter ut den gamla mot den nya Petarrayen.
-                    array_splice($allPets, $index, 100);
-                    array_push($allPets, $updatedPet);
-                    saveJson("pets.json", $allPets);
-                }
-    
-            } else { //om det INTE är true i include
-                foreach($allPets as $index => $pet){
-    
-                    $id = $pet["id"];
-                    $name = $pet["name"];
-                    $species = $pet["species"];
-                    $origin = $pet["origin"];
-    
-                    //får fram ID av ägaren till djuret.
-                    $ownersID = array_column($allOwners, "id");
-                    $indexOfOwner = array_search($pet["owner"], $ownersID);
-                    $ownerOfPet = $allOwners[$indexOfOwner];
-                    $ownerOfPetID = $ownerOfPet["id"];
-    
-                    $updatedPet = [
-                        "id" =>   $id,
-                        "name" => $name,
-                        "species" => $species,
-                        "origin" => $origin,
-                        "owner" => $ownerOfPetID
-                        ];
-                    //byter ut den gamla mot den nya Petarrayen.
-                    array_splice($allPets, $index, 100);
-                    array_push($allPets, $updatedPet);
-                    saveJson("pets.json", $allPets);
+                    //byter ut den gamla mot den nya Petarrayen, för tillfället
+                    array_push($includedArr, $updatedDog);
+                    $allPets = $includedArr;
                 }
             }
         }
-    //Maximalt antal djur
-    if (isset($_GET["limit"])) {
-        $limit = $_GET["limit"];
-        $slicedOwners = array_slice($allPets, 0, $limit);
-        sendJson($slicedOwners);
+        //first_name
+        if (isset($_GET["name"])) {
+            foreach ($allPets as $pet => $pet) {
+                if ($pet["name"] == $_GET["name"]) {
+                    sendJson($allPets[$pet]);
+                    exit();
+                }
+            }
+        }
+
+        if(isset($_GET["ids"])){//flera ids än 1.
+            $ids = explode(",", $_GET["ids"]);
+            $petsById = [];
+        
+            foreach($allPets as $pet){
+                if (in_array($pet["id"], $ids)){
+                    $petsById[] = $pet;
+                }
+            }
+            sendJson($petsById);
+        }
+        if (isset($_GET["id"])) {
+            $id = $_GET["id"];
+            $petsById = [];
+
+            foreach ($allPets as $pet) {
+                if ($pet["id"] == $id) {
+                    $petsById[] = $pet;
+                }
+            } if(count($petsById)==0){
+                $json = json_encode(["message"=>"Pet does not exist"]);
+                sendJson($json, 404);
+            }
+        }
+            if (isset($_GET["origin"])) {
+            $origin = $_GET["origin"];
+            $originArray = [];
+    
+            foreach ($allPets as $pet) {
+                if ($pet["origin"] == $origin) {
+                    array_push($originArray, $pet);
+                }
+                $allPets = $originArray;
+            } //om det inte finns användare från det specifika landet.
+            if (count($originArray) == 0) {
+                sendJson(["message" => "No pet from this origin."]);
+            }
+        }
+        if (isset($_GET["limit"])){//skickar ut antal som finns i limit
+            $limit = $_GET["limit"];
+            $slicedPets = array_slice($allPets, 0, $limit);
+            sendJson($slicedPets);
+        } else {sendJson($allPets);}
+    } else {
+        $json = json_encode(["message" => "Method is not allowed!"]);
+        sendJson($data, 405);
         exit();
     }
-
-    //hitta djur bassserat på id
-    if (isset($_GET["id"])) {
-        $id = $_GET["id"];
-        $petsById = [];
-
-        foreach ($allPets as $pet) {
-            if ($pet["id"] == $id) {
-                $petsById[] = $pet;
-            }
-            //ifall id inte finns, skicka felmeddelande
-        }
-        if (count($petsById) == 0) {
-            $json = json_encode(["message" => "User does not exist"]);
-            sendJson($json, 400);
-        }
-
-
-        sendJson($petsById);
-        exit();
-    }
-    if (isset($_GET["origin"])) {
-        $origin = $_GET["origin"];
-        $originArray = [];
-
-        foreach ($allPets as $pet) {
-            if ($pet["origin"] == $origin) {
-                array_push($originArray, $pet);
-            }
-        } //om det inte finns användare i den specifika åldern.
-        if (count($originArray) == 0) {
-            sendJson(["message" => "No pet from this origin"]);
-        } else { //annars skickar den ut alla med den specifika åldern.
-            sendJson($originArray);
-        }
-    } else { //om inte det finns AGE, skickas alla användare ut ändå.
-        sendJson($allPets);
-    }
-    //Om GET inte är GET skickas det ut ett felmeddelande. 
-} else {
-    $json = json_encode(["message" => "Method is not allowed!"]);
-    sendJson($data, 405);
-    exit();
-}
 ?>
