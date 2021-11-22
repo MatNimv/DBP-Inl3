@@ -124,7 +124,7 @@ if ($method === "PATCH"){
                 }
             }
             //uppdaterar databasen.
-            saveJson("users.json", $allOwners);
+            saveJson("owners.json", $allOwners);
 
             //om det är nycklar som inte skickats in, skrivs de ut med användaren.
             if (count($keyNotSetArr) >= 1){

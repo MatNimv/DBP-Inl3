@@ -118,7 +118,7 @@ if ($method === "PATCH"){
                     }
 
                     //uppdaterar användaren.
-                    $allUsers[$index] = $pet;
+                    $allPets[$index] = $pet;
                     $foundPet = $pet;
                     break;
                 }
@@ -133,13 +133,11 @@ if ($method === "PATCH"){
                     array_push($messageArr, $oneKey);
                 }
                 sendJson([
-                    "User" => $foundPet,
+                    "Pet" => $foundPet,
                     "Keys not changed. If this seems wrong, please check your spelling." => $messageArr
                 ]);
             } else { //annars skickas bara hela användaren.
-                sendJson([
-                    "User" => $foundPet]);
-            }
+                sendJson([$foundPet]);}
 
             //om id inte finns i databasen.
             if ($found == false){

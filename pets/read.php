@@ -77,7 +77,9 @@ if ($requestMethod === "GET") {
             } if(count($petsById)==0){
                 $json = json_encode(["message"=>"Pet does not exist"]);
                 sendJson($json, 404);
+                exit();
             }
+            sendJson($petsById);
         }
             if (isset($_GET["origin"])) {
             $origin = $_GET["origin"];
